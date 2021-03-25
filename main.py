@@ -2,6 +2,13 @@ from googleapiclient.discovery import build
 import sys
 import json, time, os
 
+green     = '\033[92m'
+cyan      = '\033[95m'
+bold      = '\033[1m'
+underline = '\033[4m'
+end       = '\033[0m'
+red       = '\033[91m'
+
 api_key =  "AIzaSyD9JDXhHNhwBLKCIVmUdjf2Bew8NfJ-UwE"
 youtube = build('youtube', 'v3', developerKey=api_key)
 # req = youtube.search().list(q='code with harry', part='snippet', type='video')
@@ -25,13 +32,13 @@ try:
         except :
             break
 except :
-    print('\ninvalid playlist id , doesnt match !\n')
-    print('Enter a valid playlist id')
+    print(f'{red}\ninvalid playlist id , doesnt match !\n')
+    print(f'Enter a valid playlist id\n')
     exit()
     
 
 channel_name = res['items'][0]['snippet']['channelTitle']
-print(f"\nChannel name : {channel_name}")
+print(f"{green}{bold}\nChannel name : {channel_name}{end}")
 # list_title = [list['items'][i]['snippet']['title'] for i in range(len(list['items']))]
 
 list_title = [i['snippet']['title'] for i in list]
@@ -76,7 +83,7 @@ def view_list():
 		print(i+1, title[i])
                                    
 while True:
-	command = input(f"\n--> (view/rename/exit)? :")
+	command = input(f"\n{cyan}--> (view/rename/exit)? :{end}")
 	if command == 'view' or command == 'v':
 		view_list()
 	elif command == 'rename' or command == 'r':

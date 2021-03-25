@@ -3,11 +3,30 @@ import sys
 import json, time, os
 
 green     = '\033[92m'
-cyan      = '\033[95m'
 bold      = '\033[1m'
 underline = '\033[4m'
 end       = '\033[0m'
 red       = '\033[91m'
+Blue = '\033[94m'
+Cyan = '\033[96m'
+White = '\033[97m'
+Yellow = '\033[93m'
+Magenta = '\033[95m'
+Grey = '\033[90m'
+Black = '\033[90m'
+Default = '\033[99m'
+black='\033[30m'
+orange='\033[33m'
+blue='\033[34m'
+purple='\033[35m'
+cyan='\033[36m'
+lightgrey='\033[37m'
+darkgrey='\033[90m'
+lightred='\033[91m'
+lightgreen='\033[92m'
+lightblue='\033[94m'
+pink='\033[95m'
+lightcyan='\033[96m'
 
 api_key =  "AIzaSyD9JDXhHNhwBLKCIVmUdjf2Bew8NfJ-UwE"
 youtube = build('youtube', 'v3', developerKey=api_key)
@@ -32,8 +51,8 @@ try:
         except :
             break
 except :
-    print(f'{red}\ninvalid playlist id , doesnt match !\n')
-    print(f'Enter a valid playlist id\n')
+    print(f'{red}\ninvalid playlist id , doesnt match !{end}\n')
+    print(f'{lightgrey}Enter a valid playlist id{end}\n')
     exit()
     
 
@@ -80,10 +99,10 @@ def rename_files(list1,list2):
 #rename_files(title, names)
 def view_list():
 	for i in range(len(title)):
-		print(i+1, title[i])
+		print(f'{lightred}{i+1}{end} {Yellow}{title[i]}{end}')
                                    
 while True:
-	command = input(f"\n{cyan}--> (view/rename/exit)? :{end}")
+	command = input(f"\n{Cyan}--> (view/rename/exit)? :{end}")
 	if command == 'view' or command == 'v':
 		view_list()
 	elif command == 'rename' or command == 'r':
@@ -93,11 +112,11 @@ while True:
 		print("Exiting!")
 		exit()
 	elif command == 'help' or command == 'h' or command == '':
-		print('''
+		print(f'''{Magenta}
 -->h/help for help message
 -->v/view for viewing the playlist
 -->r/rename for renaming in current directory
--->e/exit/q for quit
+-->e/exit/q for quit{end}
         \n''')
 	else:
 		print("\nINVALID input !!\n")

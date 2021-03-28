@@ -1,1 +1,3 @@
 renamer/
+__pycache__/
+dist/
